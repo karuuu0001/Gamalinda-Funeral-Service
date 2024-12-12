@@ -1,0 +1,393 @@
+/* Global Styles */
+:root {
+    --primary-color: #4f46e5; /* Indigo */
+    --secondary-color: #818cf8; /* Soft Blue */
+    --accent-color: #facc15; /* Yellow */
+    --bg-color: #f8fafc; /* Light Gray */
+    --text-color: #1e293b; /* Dark Gray */
+    --font-family: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    transition: all 0.3s ease;
+}
+
+/* Header Styles */
+header.banner {
+    width: 100%;
+    position: relative;
+    height: 150px; /* Limit height */
+    overflow: hidden;
+}
+
+header.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+}
+
+header .banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    text-align: center;
+}
+
+header .banner-text h1 {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+/* Back to Dashboard Link */
+.back-link {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    font-size: 1rem;
+    text-decoration: none;
+    color: var(--primary-color);
+    padding: 8px 12px;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    background-color: var(--bg-color);
+    transition: background-color 0.3s, color 0.3s;
+    z-index: 1000;
+}
+
+.back-link:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Container Styling */
+.container {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin: 2rem auto;
+    text-align: center;
+    max-width: auto; /* Ensure it doesn't stretch too wide */
+}
+
+.container h2 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem auto;
+    font-size: 1rem;
+}
+
+table th, table td {
+    padding: 0.8rem; /* Increase padding for better readability */
+    text-align: left;
+    border: 1px solid #d1d5db;
+}
+
+table th {
+    background-color: var(--secondary-color);
+    color: white;
+    font-weight: bold;
+}
+
+table td {
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+table tr:nth-child(even) {
+    background-color: #f1f5f9;
+}
+
+table .actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+table .actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0; /* Remove padding for better alignment */
+}
+
+table .actions button:hover {
+    color: var(--primary-color);
+}
+
+/* Replace buttons with emoji icons */
+.edit-btn::before {
+    content: '✏️'; /* Pencil icon */
+}
+
+.delete-btn::before {
+    content: '🗑️'; /* Trash icon */
+}
+
+/* Add Users Button */
+.add-user {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.add-user:hover {
+    background: var(--accent-color);
+}
+
+/* Popup Modal */
+/* Modal Background Blur */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dimming the background */
+    backdrop-filter: blur(5px); /* Apply blur effect */
+    z-index: 9999; /* Ensure the modal is on top */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Content */
+/* Ensure the modal's background covers the full screen */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 9999; /* Ensure the background layer is above the content */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Background with opacity */
+    overflow: auto; /* In case modal content exceeds screen height */
+    padding-top: 100px; /* Adjust to center the modal vertically */
+}
+
+/* Modal content styles */
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 600px;
+    width: 80%;
+    margin: auto; /* Center the modal horizontally */
+    z-index: 10000; /* Ensure modal content is above the background */
+}
+
+/* Close button (X) */
+.close {
+    color: #aaa;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 10px; /* Adjusted for better positioning */
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Add margin between modal text and input fields */
+.modal h2, .modal p {
+    margin-bottom: 1rem;
+}
+
+/* Input and Textarea fields */
+.modal input, .modal textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-bottom: 1rem; /* Ensure space below input fields */
+}
+
+/* Footer (buttons) spacing */
+.modal .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem; /* Space between buttons */
+    margin-top: 1rem; /* Space above buttons */
+}
+
+/* Buttons inside modal */
+.modal button {
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+}
+
+.modal button:hover {
+    background-color: var(--accent-color);
+}
+
+/* Close button inside modal */
+.modal .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.modal .close:hover {
+    color: var(--primary-color);
+}
+
+/* Overlay */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.overlay.active {
+    display: block;
+    backdrop-filter: blur(5px); /* Blur background when modal is active */
+}
+
+/* Blur Background when Modal is Active */
+body.modal-open {
+    overflow: hidden; /* Prevent scrolling while modal is open */
+    filter: blur(2px); /* Apply blur to the background */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header .banner-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    table th, table td {
+        font-size: 0.8rem;
+        padding: 0.4rem;
+    }
+
+    table .actions button {
+        font-size: 1rem;
+    }
+
+    .add-user {
+        padding: 0.7rem 1.2rem;
+    }
+}
+
+/* Back to Dashboard Button Container */
+.back-to-dashboard-container {
+    position: absolute; /* Position the container at the top left */
+    top: 15px;  /* Add some space from the top */
+    left: 10px; /* Add some space from the left */
+    z-index: 100; /* Ensure it appears on top of other content */
+}
+
+/* Back to Dashboard Button */
+.back-to-dashboard-btn {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+    padding: 8px 16px;
+    border: 1px solid #007BFF;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.back-to-dashboard-btn:hover {
+    background-color: #007BFF; /* Change background on hover */
+    color: white; /* Change text color on hover */
+}
+
+/* Dropdown Select Styling */
+select {
+    width: 100%; /* Full width inside container */
+    padding: 0.8rem; /* Padding for better touch target */
+    border: 1px solid #d1d5db; /* Light border */
+    border-radius: 4px; /* Rounded corners */
+    background-color: white; /* White background */
+    color: var(--text-color); /* Match text color */
+    font-size: 1rem;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: right 1rem center; /* Position dropdown icon */
+    background-size: 1rem; /* Size of the icon */
+    cursor: pointer; /* Pointer cursor */
+    margin-bottom: 1rem;
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--primary-color); /* Highlight border on focus */
+    box-shadow: 0 0 5px rgba(79, 70, 229, 0.5); /* Subtle glow effect */
+}
+
+select:hover {
+    border-color: var(--primary-color); /* Highlight on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    select {
+        font-size: 0.9rem; /* Adjust font size on smaller screens */
+        padding: 0.6rem; /* Smaller padding */
+    }
+}
