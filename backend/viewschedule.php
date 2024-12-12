@@ -50,7 +50,6 @@ $result = $stmt->get_result();
             padding: 0;
             box-sizing: border-box;
         }
-
         /* General Styles */
         body {
             font-family: 'Arial', sans-serif;
