@@ -50,14 +50,13 @@ $result = $stmt->get_result();
             padding: 0;
             box-sizing: border-box;
         } 
-        
+
         /* General Styles */
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f7fc;
             color: #333;
         }
-
         /* Container */
         .container {
             width: 98%;
